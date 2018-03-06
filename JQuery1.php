@@ -38,7 +38,7 @@
 
 			function ocultaElementoPorId(id){
 				$('#'+id).hide();
-			}
+			}						
 		</script>
 	</head>
 
