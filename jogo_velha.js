@@ -46,6 +46,7 @@ $(document).ready( function(){
 
 	$('.jogada').click( function(){
 		var id_campo_clicado = this.id;
+		$('#'+id_campo_clicado).off();
 		jogada(id_campo_clicado);
 
 	});
