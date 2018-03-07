@@ -17,6 +17,7 @@ matriz_jogo['c'][1] = 0;
 matriz_jogo['c'][2] = 0;
 matriz_jogo['c'][3] = 0;
 
+
 $(document).ready( function(){
 	$('#btn_iniciar_jogo').click( function(){
 
@@ -52,14 +53,14 @@ $(document).ready( function(){
 	function jogada(id){
 
 		var icone = '';
-		var ponto = 0;
+		var pontos = 0;
 
 		if((rodada % 2) == 1){
 			icone = 'url("imagens/marcacao_1.png")'
-			ponto = -1;
+			pontos = -1;
 		}else{
 			icone = 'url("imagens/marcacao_2.png")'
-			ponto = 1;
+			pontos = 1;
 		}
 
 		rodada++;
@@ -68,7 +69,7 @@ $(document).ready( function(){
 
 		var linha_coluna = id.split('-');
 
-		matriz_jogo[linha_coluna[0]][linha_coluna[1]] - ponto;
+		matriz_jogo[linha_coluna[0]][linha_coluna[1]] = pontos;
 
 		verifica_combinacao();
 	}
@@ -81,13 +82,55 @@ $(document).ready( function(){
 		for(var i = 1; i <= 3; i++){
 			pontos = pontos + matriz_jogo['a'][i];
 		}
+
+		ganhador(pontos);
+
+		pontos = 0;
+		for(var i = 1; i <= 3; i++){
+			pontos = pontos + matriz_jogo['b'][i];
+		}
+
+		ganhador(pontos);
+
+		pontos = 0;
+		for(var i = 1; i <= 3; i++){
+			pontos = pontos + matriz_jogo['c'][i];
+		}
+
+		ganhador(pontos);
+
+		//verifica na vertical
+		for(var l = 1; l <= 3; l++){
+			pontos = 0;
+
+			pontos += matriz_jogo['a'][1];
+			pontos += matriz_jogo['b'][1];
+			pontos += matriz_jogo['c'][1];
+
+			ganhador(pontos);
+		}
+
+		//verifica diagonal
+		pontos = 0;
+
+		pontos = matriz_jogo['a'][1] + matriz_jogo['b'][2] + matriz_jogo['c'][3];
+		ganhador(pontos);
+		pontos = matriz_jogo['a'][3] + matriz_jogo['b'][2] + matriz_jogo['c'][1];
+		ganhador(pontos);
+
 	}
 
 	function ganhador(pontos){
-		if( pontos == -3){
-			alert('Jogador 1 é o vencedor');
+
+		var entrada_apelido_jogador_1 = $('#entrada_apelido_jogador_1').val();
+		var entrada_apelido_jogador_2 = $('#entrada_apelido_jogador_2').val();
+
+		if( pontos == -3){			
+			alert(entrada_apelido_jogador_1 + ' é o vencedor');
+			$('.jogada').off();
 		}else if(pontos == 3){
-			alert('Jogador 2 é o vencedor');
+			alert(entrada_apelido_jogador_2 + ' é o vencedor');
+			$('.jogada').off();
 		}
 	}
 
