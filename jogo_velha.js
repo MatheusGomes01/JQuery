@@ -18,7 +18,7 @@ matriz_jogo['c'][2] = 0;
 matriz_jogo['c'][3] = 0;
 
 
-$(document).ready( function(){
+$(document).ready(function(){
 	$('#btn_iniciar_jogo').click( function(){
 
 		//valida a digitação dos apelidos de jogadores
@@ -109,6 +109,8 @@ $(document).ready( function(){
 			pontos += matriz_jogo['c'][1];
 
 			ganhador(pontos);
+
+
 		}
 
 		//verifica diagonal
@@ -132,7 +134,7 @@ $(document).ready( function(){
 		}else if(pontos == 3){
 			alert(entrada_apelido_jogador_2 + ' é o vencedor');
 			$('.jogada').off();
-		}
+		}else if( pontos 
 	}
 
 });
