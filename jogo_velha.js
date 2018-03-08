@@ -125,6 +125,8 @@ $(document).ready(function(){
 
 	function ganhador(pontos){
 
+		console.log(matriz_jogo);
+
 		var entrada_apelido_jogador_1 = $('#entrada_apelido_jogador_1').val();
 		var entrada_apelido_jogador_2 = $('#entrada_apelido_jogador_2').val();
 
@@ -134,7 +136,7 @@ $(document).ready(function(){
 		}else if(pontos == 3){
 			alert(entrada_apelido_jogador_2 + ' é o vencedor');
 			$('.jogada').off();
-		}else if( pontos 
+		}
 	}
 
 });
